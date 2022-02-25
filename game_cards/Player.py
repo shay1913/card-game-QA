@@ -17,3 +17,9 @@ class Player:
         self.P_name = P_name
         self.P_cards = []
         self.P_num_of_cards = P_num_of_cards
+
+    """A method that gets deck of cards, and split random cards for each player,
+     according to the game cards number"""
+    def set_hand(self, deck: DeckOfCards):
+        for i in range(self.P_num_of_cards):
+            self.P_cards.append(deck.deal_one())
