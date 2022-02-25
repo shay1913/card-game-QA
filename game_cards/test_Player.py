@@ -55,3 +55,16 @@ class TestPlayer(TestCase):
         deck = DeckOfCards()
         player.set_hand(deck)
         self.assertEqual(player.P_cards.count(Card(2,5)),10)  # Check that the dealt card is in Player's hand
+
+# ===================================================================================
+
+    # Test that random card pulls out from player's deck of cards
+    def test_get_card(self):
+        deck = DeckOfCards()
+        self.test_player.set_hand(deck)
+        self.assertEqual(len(self.test_player.P_cards),26)
+        self.test_player.get_card()
+        self.assertEqual(len(self.test_player.P_cards),25)
+
+# ===================================================================================
+
