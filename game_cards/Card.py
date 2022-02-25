@@ -17,3 +17,19 @@ class Card:
 
         self.suit = suit
         self.value = value
+
+    """a method that compering two cards and return the bigger card"""
+    def __gt__(self, other):
+        if type(other.value)!=int:
+            raise TypeError("Card type must be int")
+        if type(other.suit)!=int:
+            raise TypeError("Card type must be int")
+        if self.value>other.value:
+            return True
+        if self.value == other.value:
+            if self.suit<other.suit:
+                return True
+            else:
+                return False
+        else:
+            return False
