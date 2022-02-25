@@ -23,3 +23,7 @@ class Player:
     def set_hand(self, deck: DeckOfCards):
         for i in range(self.P_num_of_cards):
             self.P_cards.append(deck.deal_one())
+
+    """A method that pulls random card from the player's deck of cards and return it"""
+    def get_card(self):
+        return self.P_cards.pop()
