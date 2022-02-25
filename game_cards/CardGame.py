@@ -32,3 +32,13 @@ class CardGame:
         else:
             print("Error! game already started")
             return
+
+    """A method that will present the winning player from the players"""
+    def get_winner(self):
+        if len(self.player1.P_cards)>len(self.player2.P_cards):
+            return self.player1
+
+        elif len(self.player1.P_cards)<len(self.player2.P_cards):
+            return self.player2
+        else:
+            return None   # if the game ended in tie, the method return None
