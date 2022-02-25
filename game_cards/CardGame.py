@@ -20,4 +20,15 @@ class CardGame:
         self.player2 = Player(player2,num_of_cards)
         self.new_game()
 
-
+    """A method that shuffle the deck and deal the cards to the players"""
+    def new_game(self):
+        # the method can only start once
+        count_new_game = 0
+        if count_new_game == 0:
+            self.deck.card_shuffle()
+            self.player1.set_hand(self.deck)
+            self.player2.set_hand(self.deck)
+            count_new_game += 1
+        else:
+            print("Error! game already started")
+            return
