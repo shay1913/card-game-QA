@@ -9,3 +9,7 @@ class DeckOfCards:
             for value in range(2,15):
                 new_card = Card(suit, value)
                 self.all_cards.append(new_card)
+
+    """A method that randomly shuffles the list of cards"""
+    def card_shuffle(self):
+        shuffle(self.all_cards)
