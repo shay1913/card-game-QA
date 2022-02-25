@@ -1,5 +1,6 @@
 from game_cards.Card import Card
 from random import shuffle
+
 class DeckOfCards:
     """A method that creates a complete deck of 52 different cards,13 cards from each suit"""
     def __init__(self):
