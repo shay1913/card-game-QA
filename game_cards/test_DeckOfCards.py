@@ -18,3 +18,22 @@ class TestDeckOfCards(TestCase):
         test_list1 = DeckOfCards()
         self.deck_test.card_shuffle()
         self.assertNotEqual(test_list1.all_cards, self.deck_test.all_cards)
+
+    # test validation of deal_one by compare 2 lists before and after
+    def test_deal_one(self):
+        test_list1 = DeckOfCards()
+        self.deck_test.deal_one()
+        self.assertNotEqual(test_list1.all_cards, self.deck_test.all_cards)
+
+    # test validation of deal_one by compare len of 2 lists before and after
+    def test_deal_one2(self):
+        test_list1 = DeckOfCards()
+        self.assertEqual(len(test_list1.all_cards),len(self.deck_test.all_cards))
+
+        self.assertNotEqual(len(test_list1.all_cards),len(self.deck_test.all_cards))
+
+    # tests that the method not giving any card when the deck is empty, and return a message
+    def test_deal_one3(self):
+        test_list1 = DeckOfCards()
+        test_list1.all_cards = []
+        test_list1.deal_one()
