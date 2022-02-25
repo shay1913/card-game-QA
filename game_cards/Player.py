@@ -27,3 +27,11 @@ class Player:
     """A method that pulls random card from the player's deck of cards and return it"""
     def get_card(self):
         return self.P_cards.pop()
+
+    """A method that receives card and adding it to the player's deck of cards"""
+    def add_card(self,card: Card):
+        # the fix for test invalid_add_card
+        if type(card)!=Card:
+            raise TypeError("value must be type Card")
+
+        self.P_cards.append(card)
