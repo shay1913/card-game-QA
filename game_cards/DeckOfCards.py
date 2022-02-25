@@ -22,3 +22,6 @@ class DeckOfCards:
             return card
         else:
             print("There is no cards to give")
+
+    def __repr__(self):
+        return f"{self.all_cards}"
