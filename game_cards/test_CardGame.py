@@ -44,3 +44,38 @@ class TestCardGame(TestCase):
         self.assertEqual(len(self.test_war_game.player1.P_cards),10)
         self.assertEqual(len(self.test_war_game.player2.P_cards),10)
         self.assertEqual(len(self.test_war_game.deck.all_cards),32)
+
+
+    #test that player1 is the winner of the game
+    def test_get_winner(self):
+        card1 = self.test_war_game.player1.get_card()
+        card2 = self.test_war_game.player2.get_card()
+        self.test_war_game.player1.add_card(card1)
+        self.test_war_game.player1.add_card(card2)
+        self.assertEqual(self.test_war_game.get_winner(),self.test_war_game.player1)
+        self.assertEqual(len(self.test_war_game.player1.P_cards),11)
+        self.assertEqual(len(self.test_war_game.player2.P_cards),9)
+
+
+    # test that other player(player2) is the winner of the game
+    def test_get_winner2(self):
+        card1 = self.test_war_game.player1.get_card()
+        card2 = self.test_war_game.player2.get_card()
+        self.test_war_game.player2.add_card(card1)
+        self.test_war_game.player2.add_card(card2)
+        self.assertEqual(self.test_war_game.get_winner(),self.test_war_game.player2)
+        self.assertEqual(len(self.test_war_game.player1.P_cards),9)
+        self.assertEqual(len(self.test_war_game.player2.P_cards),11)
+
+    def test_get_winner3(self):
+        card1 = self.test_war_game.player1.get_card()
+        card2 = self.test_war_game.player2.get_card()
+        self.test_war_game.player1.add_card(card1)
+        self.test_war_game.player1.add_card(card2)
+        card1 = self.test_war_game.player1.get_card()
+        card2 = self.test_war_game.player2.get_card()
+        self.test_war_game.player2.add_card(card1)
+        self.test_war_game.player2.add_card(card2)
+        self.assertEqual(self.test_war_game.get_winner(), None)
+        self.assertEqual(len(self.test_war_game.player1.P_cards), 10)
+        self.assertEqual(len(self.test_war_game.player2.P_cards), 10)
