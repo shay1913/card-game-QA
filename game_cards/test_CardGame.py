@@ -33,3 +33,14 @@ class TestCardGame(TestCase):
         with self.assertRaises(TypeError):
             invalid_num_of_cards_game = CardGame("efi","omer","asdss")
 
+    #test that after new_game started the number of cards in the deck updated
+    def test_new_game(self):
+        self.assertEqual(len(self.test_war_game.player1.P_cards),10)
+        self.assertEqual(len(self.test_war_game.player2.P_cards),10)
+        self.assertEqual(len(self.test_war_game.deck.all_cards),32)
+
+    def test_new_game2(self):
+        self.test_war_game.new_game()
+        self.assertEqual(len(self.test_war_game.player1.P_cards),10)
+        self.assertEqual(len(self.test_war_game.player2.P_cards),10)
+        self.assertEqual(len(self.test_war_game.deck.all_cards),32)
