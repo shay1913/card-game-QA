@@ -35,3 +35,6 @@ class Player:
             raise TypeError("value must be type Card")
 
         self.P_cards.append(card)
+
+    def __repr__(self):
+        return f"{self.P_name}"
