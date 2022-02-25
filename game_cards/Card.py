@@ -33,3 +33,10 @@ class Card:
                 return False
         else:
             return False
+
+    """a method that check if cards parameters are equal"""
+    def __eq__(self, other):
+        if self.value==other.value and self.suit==other.suit:
+            return True
+        else:
+            return False
