@@ -38,3 +38,20 @@ class TestPlayer(TestCase):
         # Invalid num of cards as str
         with self.assertRaises(TypeError):
             invalid_test_player2 = Player("Shay", "abc")  # test that num of cards can't be str!
+
+# ===================================================================================
+
+    # Test that set_hand is valid and divide cards to players
+    def test_set_hand(self):
+        deck = DeckOfCards()
+        self.assertEqual(len(self.test_player.P_cards),0)
+        self.test_player.set_hand(deck)
+        self.assertEqual(len(self.test_player.P_cards),26)
+
+    # Checks that the dealt card from the deck is in Player's hand
+    @mock.patch('game_cards.DeckOfCards.DeckOfCards.deal_one',return_value = Card(2,5))
+    def test_set_hand2(self,mock_deal_one):
+        player = Player("Yoni",10)
+        deck = DeckOfCards()
+        player.set_hand(deck)
+        self.assertEqual(player.P_cards.count(Card(2,5)),10)  # Check that the dealt card is in Player's hand
