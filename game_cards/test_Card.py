@@ -18,7 +18,7 @@ class TestCard(TestCase):
         with self.assertRaises(TypeError):  # test value as str
             invalid_value = Card(1,"ggs")
 
-    # testing invalid suit not in range 1-4 and value not in range 2-14
+    # Testing invalid suit not in range 1-4 and value not in range 2-14
     def test_invalid__init__2(self):
         with self.assertRaises(ValueError):
             invalid_suit_range = Card(5, 3)
@@ -29,18 +29,18 @@ class TestCard(TestCase):
         with self.assertRaises(ValueError):
             invalid_value_range = Card(2, 1)
 
-    # testing valid gt
+    # Checks __gt__ method basic behaviour
     def test_valid__gt__(self):
         card2 = Card(2,4)
         card3 = Card(1,8)
         card4 = Card(3,6)
         card5 = Card(1,6)
-        self.assertGreater(self.card,card2)  # test that the value of main card bigger than value of card2
-        self.assertGreater(card3,self.card)  # test that the value of card3 bigger than value of main card
-        self.assertGreater(self.card,card4)  # test that the suit of main card bigger than suit of card4
-        self.assertGreater(card5,self.card)  # test that the suit of card5 bigger than suit of main card
+        self.assertGreater(self.card,card2)  # Test that the value of main card bigger than value of card2
+        self.assertGreater(card3,self.card)  # Test that the value of card3 bigger than value of main card
+        self.assertGreater(self.card,card4)  # Test that the suit of main card bigger than suit of card4
+        self.assertGreater(card5,self.card)  # Test that the suit of card5 bigger than suit of main card
 
-    # test invalid other card in __gt__
+    # Test invalid other card in __gt__
     def test_invalid__gt__invalid_card(self):
         with self.assertRaises(TypeError):
             invalid_card = Card(2, "aff")  # the value of other card must be type of int!
@@ -48,3 +48,10 @@ class TestCard(TestCase):
         with self.assertRaises(TypeError):
             invalid_suit = Card("avv",6)  # the suit of other card must be type of int!
             self.assertGreater(self.card,invalid_suit)
+
+    # Checks __eq__ method basic behaviour
+    def test__eq__valid(self):
+        six_of_spade = Card(2, 6)
+        ten_of_heart = Card(3,10)
+        self.assertTrue(self.card == six_of_spade)  # The same card
+        self.assertFalse(six_of_spade == ten_of_heart)  # Not the same card
